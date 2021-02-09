@@ -1,0 +1,16 @@
+<%= form_with url: "/static_pages/user_photos", method: "get" do |f| %>
+  <%= f.label :user_id, "User Flickr ID: " %>
+  <%= f.text_field :user_id %><br>
+  <%= f.submit "Get photos"%>
+<% end %>
+
+<% if @user_id != nil && @user_id != "" %>
+  Photos for user with ID <%= @user_id %>:
+  <ul>
+    <% @urls.each do |url| %>
+      <li>
+        <%= image_tag(url) %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
